@@ -53,6 +53,10 @@
       color: #fff;
       margin: 0;
       font-size: 1.8rem; /* Responsive font size */
+      position: absolute; /* Center the title absolutely */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1; /* Ensure it's above other elements */
     }
     header span {
       color: #df0c0c;
@@ -63,6 +67,10 @@
     }
     .logo {
       margin-right: 1rem;
+      z-index: 2; /* Ensure logo is clickable */
+    }
+    .menu-btn {
+      z-index: 2; /* Ensure button is clickable */
     }
 
     /* Navigation Styles */
@@ -395,9 +403,19 @@
   </div>
 
   <script>
+    // Toggle sidebar on menu button click
     document.getElementById('menu-btn').onclick = function() {
       document.getElementById('sidebar').classList.toggle('active');
     };
+
+    // Close sidebar when clicking outside (on mobile for better UX)
+    document.addEventListener('click', function(event) {
+      const sidebar = document.getElementById('sidebar');
+      const menuBtn = document.getElementById('menu-btn');
+      if (!sidebar.contains(event.target) && !menuBtn.contains(event.target) && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+      }
+    });
   </script>
 </body>
 </html>
