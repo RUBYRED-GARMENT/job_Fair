@@ -9,7 +9,6 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   />
   <link rel="icon" href="pic/logooo.png" />
-  <link rel="stylesheet" href="about.css" />
   <style>
     /* Base Styles */
     * {
@@ -34,7 +33,7 @@
       background: rgb(90, 90, 90);
       color: #000;
       position: relative;
-      padding-bottom: 100px; /* Add padding to account for fixed footer */
+      padding-bottom: 100px;
     }
 
     /* Header Styles */
@@ -49,31 +48,41 @@
       top: 0;
       z-index: 1000;
     }
+
     header h2 {
       color: #fff;
       margin: 0;
-      font-size: 1.8rem; /* Responsive font size */
-      position: absolute; /* Center the title absolutely */
+      font-size: 1.8rem;
+      position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 1; /* Ensure it's above other elements */
+      z-index: 1;
     }
     header span {
       color: #df0c0c;
     }
+
     .logo img {
       height: 40px;
       width: auto;
-    }
-    .logo {
-      margin-right: 1rem;
-      z-index: 2; /* Ensure logo is clickable */
-    }
-    .menu-btn {
-      z-index: 2; /* Ensure button is clickable */
+
+      /* ===== FIX: PURE SELF ROTATION ===== */
+      animation: spin 4s linear infinite;
+      transform-origin: center center !important;
+      display: block;
     }
 
-    /* Navigation Styles */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .menu-btn {
+      z-index: 2;
+      display: none;
+    }
+
+    /* Navigation */
     #navbar ul {
       list-style: none;
       padding: 0;
@@ -91,17 +100,7 @@
       color: #df0c0c;
     }
 
-    /* Menu Button (Hidden on desktop) */
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* Apply Now Button (#logout-btn) */
+    /* Apply Now Button */
     #logout-btn {
       width: 300px;
       height: 70px;
@@ -122,10 +121,12 @@
       z-index: 900;
       text-align: center;
     }
+
     #logout-btn:hover {
       background: #c72727;
       box-shadow: 0 0 25px #c72727;
     }
+
     #logout-btn a {
       color: white;
       text-decoration: none;
@@ -136,7 +137,6 @@
       line-height: 50px;
     }
 
-    /* Text Section */
     .text {
       text-align: center;
       padding-top: 5rem;
@@ -146,8 +146,8 @@
       font-size: 3rem;
       margin: 0;
     }
-    
-    /* Footer Styles */
+
+    /* Footer */
     .footer {
       position: fixed;
       bottom: 0;
@@ -162,8 +162,13 @@
     .footer img {
       width: 55px;
       height: 55px;
-      margin-left: 0;
+
+      /* SAME FIX FOR FOOTER LOGO */
+      animation: spin 4s linear infinite;
+      transform-origin: center center !important;
+      display: block;
     }
+
     .footer p {
       font-size: 17px;
       color: white;
@@ -171,6 +176,7 @@
       margin: 0 20px;
       flex-grow: 1;
     }
+
     .social a {
       color: white;
       padding: 0 10px;
@@ -180,11 +186,8 @@
     .social a:hover {
       color: #df0c0c;
     }
-    .social {
-      margin-left: auto;
-    }
 
-    /* Sidebar Styles */
+    /* Sidebar */
     #sidebar {
       position: fixed;
       top: 0;
@@ -198,18 +201,22 @@
       z-index: 2000;
       padding-top: 5rem;
     }
+
     #sidebar.active {
       right: 0;
     }
+
     #sidebar ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     #sidebar ul li {
       padding: 1rem 1.5rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     #sidebar ul li a {
       color: #e0e0e0;
       text-decoration: none;
@@ -218,155 +225,53 @@
       display: block;
       transition: color 0.3s ease;
     }
+
     #sidebar ul li a:hover {
       color: #df0c0c;
     }
 
-    /* --- Responsive Media Queries --- */
-
-    /* Large Desktops (1200px+) - No changes needed, but ensure scaling */
-    @media (min-width: 1200px) {
-      .text h1 {
-        font-size: 3.5rem; /* Slightly larger for big screens */
-      }
-    }
-
-    /* Tablet/Small Desktop (max-width: 1024px) */
-    @media (max-width: 1024px) {
-      header {
-        padding: 1rem 2rem;
-      }
-      .text h1 {
-        font-size: 2.5rem;
-      }
-      #logout-btn {
-        width: 250px;
-        height: 60px;
-        top: 250px;
-      }
-      #logout-btn a {
-        font-size: 28px;
-        line-height: 40px;
-      }
-    }
-
-    /* Mobile (max-width: 768px) */
+    /* Responsive */
     @media (max-width: 768px) {
-      header {
-        padding: 1rem 1rem;
-        flex-wrap: wrap;
+      .menu-btn { display: block; }
+      #navbar { display: none; }
+
+      /* FIX: ensure center rotation in mobile */
+      .logo img,
+      .footer img {
+        transform-origin: center center !important;
       }
-      .logo {
-        margin-right: 0;
-      }
-      .menu-btn {
-        display: block;
-        order: 3;
-      }
-      #navbar {
-        display: none;
-      }
+
       header h2 {
         font-size: 1.5rem;
-        margin-right: auto;
       }
+
       #logout-btn {
         width: 200px;
         height: 50px;
         top: 200px;
       }
+
       #logout-btn a {
-        font-size: 20px;
-        line-height: 30px;
-      }
-      #sidebar {
-        width: 80%;
-        max-width: 250px;
-        padding-top: 4rem;
-      }
-      .text h1 {
-        font-size: 2rem;
-        padding: 1rem;
-      }
-      .footer {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px 15px;
-      }
-      .footer img {
-        margin: 0 auto 5px auto;
-      }
-      .footer p {
-        margin: 5px 0;
-        font-size: 15px;
-      }
-      .social {
-        margin: 5px 0 0 0;
-      }
-      .social a {
-        font-size: 20px;
+        font-size: 22px;
       }
     }
 
-    /* Small Mobile (max-width: 480px) */
-    @media (max-width: 480px) {
-      header {
-        padding: 0.5rem 1rem;
-      }
-      header h2 {
-        font-size: 1.2rem;
-      }
-      .logo img {
-        height: 30px;
-      }
-      #logout-btn {
-        width: 180px;
-        height: 45px;
-        top: 150px;
-      }
-      #logout-btn a {
-        font-size: 18px;
-        line-height: 25px;
-      }
-      .text h1 {
-        font-size: 1.8rem;
-        padding: 0.5rem;
-      }
-      .footer {
-        padding: 8px 10px;
-      }
-      .footer img {
-        width: 40px;
-        height: 40px;
-      }
-      .footer p {
-        font-size: 14px;
-      }
-      .social a {
-        font-size: 18px;
-        padding: 0 8px;
-      }
-      #sidebar {
-        width: 90%;
-        padding-top: 3rem;
-      }
-      #sidebar ul li {
-        padding: 0.8rem 1rem;
-      }
-      #sidebar ul li a {
-        font-size: 0.9rem;
-      }
-    }
   </style>
 </head>
+
 <body>
   <div id="content-section">
     <header>
-      <div class="logo"><img src="pic/logooo.png" alt="rubyred" /></div>
+      <div class="logo">
+        <img src="pic/logooo.png" alt="rubyred" />
+      </div>
+
       <h2>RUBY<span>RED</span></h2>
-      <button class="menu-btn" id="menu-btn" aria-label="Open navigation">
+
+      <button class="menu-btn" id="menu-btn">
         <i class="fas fa-bars"></i>
       </button>
+
       <nav id="navbar">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -382,19 +287,18 @@
         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScDu9lQitjeoUtDZcqplGcKUP5qJND3WDqieBY89T_fSsZHbA/viewform?usp=publish-editor">Apply now</a></li>
       </ul>
     </div>
-    
+
     <div class="text"><h1>Welcome to Rubyred</h1></div>
 
-    <div id="off" style="display: none;">
-      <img src="pic/closed.jpg" alt="closed">
-    </div>
-
-    <button id="logout-btn"><a href="https://docs.google.com/forms/d/e/1FAIpQLScDu9lQitjeoUtDZcqplGcKUP5qJND3WDqieBY89T_fSsZHbA/viewform?usp=publish-editor">Apply now</a></button>
+    <button id="logout-btn">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScDu9lQitjeoUtDZcqplGcKUP5qJND3WDqieBY89T_fSsZHbA/viewform?usp=publish-editor">Apply now</a>
+    </button>
   </div>
-  
+
   <div class="footer">
     <img src="pic/logooo.png" alt="">
     <p>RUBYRED GARMENT</p>
+
     <div class="social">
       <a href="https://www.facebook.com/RUBYREDGARMENTSAE/" target="_blank"><i class="fab fa-facebook-f"></i></a>
       <a href="https://www.linkedin.com/company/rubyred-garment-manufacturing-s-a-e/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -403,19 +307,10 @@
   </div>
 
   <script>
-    // Toggle sidebar on menu button click
-    document.getElementById('menu-btn').onclick = function() {
+    document.getElementById('menu-btn').onclick = () => {
       document.getElementById('sidebar').classList.toggle('active');
     };
-
-    // Close sidebar when clicking outside (on mobile for better UX)
-    document.addEventListener('click', function(event) {
-      const sidebar = document.getElementById('sidebar');
-      const menuBtn = document.getElementById('menu-btn');
-      if (!sidebar.contains(event.target) && !menuBtn.contains(event.target) && sidebar.classList.contains('active')) {
-        sidebar.classList.remove('active');
-      }
-    });
   </script>
+
 </body>
 </html>
