@@ -599,7 +599,7 @@ width: 100%;
     section {
         height: 50vh;
         padding: 15px;
-        background-size:cover;
+        background-position:left;
     }
     .sec1 {
         height: 80vh;
