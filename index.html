@@ -47,6 +47,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      height: 60px;
     }
 
     header h2 {
@@ -54,7 +55,7 @@
       margin: 0;
       font-size: 1.8rem;
       position: absolute;
-      left: 50%;
+      left: 10%;
       transform: translateX(-50%);
       z-index: 1;
     }
@@ -63,8 +64,11 @@
     }
 
     .logo img {
-      height: 40px;
-      width: auto;
+      height: 45px;
+      width: 45px;
+      position: fixed;
+      left: 735px;
+        top: 7px;
 
       /* ===== FIX: PURE SELF ROTATION ===== */
       animation: spin 4s linear infinite;
@@ -158,16 +162,18 @@
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
+      height:130px;
     }
     .footer img {
-      width: 55px;
-      height: 55px;
-
-      /* SAME FIX FOR FOOTER LOGO */
-      animation: spin 4s linear infinite;
-      transform-origin: center center !important;
-      display: block;
+      width: 65px;
+      height: 65px;
+      position: fixed;
+      left:719px;
+      bottom:8%;
+      
     }
+      /* SAME FIX FOR FOOTER LOGO */
+   
 
     .footer p {
       font-size: 17px;
@@ -175,13 +181,20 @@
       font-weight: bold;
       margin: 0 20px;
       flex-grow: 1;
+      position: fixed;
+      left:649px;
+      bottom:5%;
     }
 
     .social a {
       color: white;
       padding: 0 10px;
-      font-size: 24px;
+      font-size: 22px;
       transition: color 0.3s;
+      position: relative;
+      left:659px;
+      top:45px
+
     }
     .social a:hover {
       color: #df0c0c;
@@ -190,7 +203,7 @@
     /* Sidebar */
     #sidebar {
       position: fixed;
-      top: 0;
+      top: 60px;
       right: -250px;
       width: 250px;
       height: 100vh;
@@ -200,6 +213,7 @@
       transition: right 0.3s ease;
       z-index: 2000;
       padding-top: 5rem;
+      border-radius: 13px;
     }
 
     #sidebar.active {
@@ -220,8 +234,8 @@
     #sidebar ul li a {
       color: #e0e0e0;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
+      font-weight: bold;
+      font-size: 1.4rem;
       display: block;
       transition: color 0.3s ease;
     }
@@ -234,15 +248,84 @@
     @media (max-width: 768px) {
       .menu-btn { display: block; }
       #navbar { display: none; }
+      .menu-btn{
+        background: none;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        position: fixed;
+        right:7%;
+        z-index: 999;
+      }
+      header{
+        height: 60px;
+        
+      }
+      #logout-btn {
+        margin-top: 100px;
+      }
+
+      #logout-btn a {
+        font-size: 20px;
+        position: fixed;
+        left: 0%;
+        bottom: 0%;
+      }
+      .footer p {
+      font-size: 17px;
+      color: white;
+      font-weight: bold;
+      margin: 0 20px;
+      flex-grow: 1;
+      position: fixed;
+      left:35%;
+      bottom:37px;
+    }
+
+    .social a {
+      color: white;
+      padding: 0 10px;
+      font-size: 22px;
+      transition: color 0.3s;
+      position: relative;
+      left: 204px;
+      top:45px
+
+    }
+    .footer img {
+        width: 55px;
+        height: 55px;
+        position: fixed;
+        left:48%;
+        bottom:9%;
+        
+      }
+
 
       /* FIX: ensure center rotation in mobile */
-      .logo img,
-      .footer img {
+      .logo img {
         transform-origin: center center !important;
+      }
+      .logo {
+        position: fixed;
+        left: 50%;
+        top: 10px;
+        transform: translateX(-50%);
+      }
+   .logo img {
+        height: 45px;
+        width: 45px;
+        position: fixed;
+        left: -10px;
+        top: 0;
+        transform: translateX(-50%);
       }
 
       header h2 {
         font-size: 1.5rem;
+        position: fixed;
+        left:14%;
       }
 
       #logout-btn {
