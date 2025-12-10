@@ -484,6 +484,7 @@ width: 100%;
         height: 60px;
         padding: 10px 15px;
     }
+    .section{background-size:130%}
     header h2 {
         font-size: 30px;
         padding-left: 20px;
