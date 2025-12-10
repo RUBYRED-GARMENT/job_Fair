@@ -677,3 +677,10 @@ width: 100%;
         margin: 0 9px;
     }
 }
+@media (max-width: 768px) {
+    section {
+        background-size: contain;  /* أو cover لو عايز تملى الشاشة */
+        background-position: top;  /* أو center حسب الصورة */
+        background-repeat: no-repeat;
+    }
+}
