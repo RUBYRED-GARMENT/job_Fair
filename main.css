@@ -484,7 +484,7 @@ width: 100%;
         height: 60px;
         padding: 10px 15px;
     }
-    .section{background-size:130%}
+    
     header h2 {
         font-size: 30px;
         padding-left: 20px;
@@ -600,7 +600,7 @@ width: 100%;
     section {
         height: 50vh;
         padding: 15px;
-        background-size:130%;
+        background-size:100%;
     }
     .sec1 {
         height: 80vh;
@@ -680,7 +680,8 @@ width: 100%;
 @media (max-width: 768px) {
     section {
         background-size: contain;  /* أو cover لو عايز تملى الشاشة */
-        background-position: top;  /* أو center حسب الصورة */
+        background-position: left;  /* أو center حسب الصورة */
         background-repeat: no-repeat;
+    
     }
 }
